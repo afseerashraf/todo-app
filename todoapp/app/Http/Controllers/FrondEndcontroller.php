@@ -15,13 +15,14 @@ class FrondEndcontroller extends Controller
     //
 
     public function login(){
+        
          return view('login');
 }
     public function userLogin(){
 
 
-        $input = User::create(['user_name' => request('username'), 'password' => request('password')]);
-        if(auth()->attempt($input)){
+        $user = User::create(['user_name' => request('username'), 'password' => request('password'),]);
+        if(auth()->attempt($user)){
             
             return redirect()->route('create');
 
@@ -50,5 +51,10 @@ class FrondEndcontroller extends Controller
 
         return redirect()->route('viewtodo')->with('message', 'Task deleted');
 
+    }
+
+    public function logout(){
+        auth()->logout();
+        return redirect()->route('Login');
     }
 }

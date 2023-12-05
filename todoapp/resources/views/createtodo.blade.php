@@ -2,6 +2,7 @@
 @section('content')
 
 <div class="continer-fluid-md-6">
+    <h4>Welcome{{auth()->user()->user_name}}</h4>
     <form action="{{route('todotask')}}" method="post">
         @csrf
 
@@ -34,6 +35,10 @@
     </div>
     <div class="col-lg-3">
     <a href="{{route('viewtodo')}}"><button type="button" class="btn btn-success">view task</button>
+    </div>
+    <div class="co-lg-3">
+        <a href="{{route('logoutuser')}}"><button type="button" class="btn btn-danger">Logout</button>
+
     </div>
     </div>
     

@@ -5,7 +5,7 @@
 
 
 <p>@if(session()->has('message')) session()->get('message')@endif</p>
-<form action="{{route('userLogin')}}" method="post">
+<form action="{{route('Login')}}" method="post">
   @csrf
   <div class="mb-3">
     <label for="eusername" class="form-label">Username</label>
@@ -19,6 +19,10 @@
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
+  <input class="form-check-input" type="checkbox" name="remember" id="remember">
+            <label class="form-check-label" for="remember">
+                Remember Me
+            </label>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </div>
