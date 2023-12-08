@@ -18,5 +18,9 @@ class Usertableseeder extends Seeder
             'user_name' => 'afseer',
             'password' => '12345',
         ]);
+        User::create([
+            'user_name' => 'nafiya',
+            'password' => '1234',
+        ]);
     }
 }

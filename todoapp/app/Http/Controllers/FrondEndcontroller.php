@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Todo;
 use App\Models\User;
+use App\Http\Middleware;
+use App\Models\UserAddress;
 
 // Your controller code here
 
@@ -38,6 +40,7 @@ class FrondEndcontroller extends Controller
 
     public function todo(){
         $data = Todo::create(['task' => request('todotask'), 'date' => request('date'),'time' => request('time')]);
+      
         return redirect()->route('create')->with('message', 'successfully add your task');
     }
     public function list(){
@@ -56,5 +59,12 @@ class FrondEndcontroller extends Controller
     public function logout(){
         auth()->logout();
         return redirect()->route('Login');
+    }
+
+
+    public function address(){
+        $user = User::all();
+
+        return view('userAddress', compact('user'));
     }
 }

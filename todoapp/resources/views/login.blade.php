@@ -5,7 +5,7 @@
 
 
 <p>@if(session()->has('message')) session()->get('message')@endif</p>
-<form action="{{route('Login')}}" method="post">
+<form action="{{route('user.Login')}}" method="post">
   @csrf
   <div class="mb-3">
     <label for="eusername" class="form-label">Username</label>
