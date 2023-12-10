@@ -63,7 +63,10 @@ class FrondEndcontroller extends Controller
 
 
     public function address(){
-        $user = User::all();
+
+     
+
+        $user = User::find(3);
 
         return view('userAddress', compact('user'));
     }
