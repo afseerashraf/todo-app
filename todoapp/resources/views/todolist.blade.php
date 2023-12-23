@@ -2,7 +2,7 @@
 @section('content')
 
 
-<h1>my todo</h1>
+<h1></h1>
 <table class="table table-warning">
   <thead>
     <tr>

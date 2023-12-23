@@ -23,14 +23,27 @@ class FrondEndcontroller extends Controller
     public function userLogin(){
 
 
-        $user = User::create(['user_name' => request('username'), 'password' => request('password'),]);
-        if(auth()->attempt($user)){
-            
-            return redirect()->route('create');
+        validator(request()->all(),[
+            'user_name' => ['required', 'username'],
+            'password' => ['required', 'password']
+        ])->validate();
 
+        if(auth()->attempt(request()->only(['username', 'password']))){
+            return redirect()->route('create');
         }else{
-                return redirect()->route('login')->with('message', 'invalid login data');
+             return redirect()->route('login')->with('message', 'invalid login data');
+
         }
+
+
+        // $user = User::create(['user_name' => request('username'), 'password' => request('password'),]);
+        // if(auth()->attempt($user)){
+            
+        //     return redirect()->route('create');
+
+        // }else{
+        //         return redirect()->route('login')->with('message', 'invalid login data');
+        // }
     }
 
 
@@ -39,10 +52,14 @@ class FrondEndcontroller extends Controller
     }
 
     public function todo(){
-        $data = Todo::create(['task' => request('todotask'), 'date' => request('date'),'time' => request('time')]);
+
+      
+
+        $data = Todo::create(['task' => request ('todotask'), 'date' => request('date'),'time' => request('time')]);
       
         return redirect()->route('create')->with('message', 'successfully add your task');
     }
+    
     public function list(){
         $todos = Todo::latest()->get();
         return view('todolist',compact('todos'));
@@ -52,7 +69,7 @@ class FrondEndcontroller extends Controller
         $task = Todo::find($id);
         $task->delete();
 
-        return redirect()->route('viewtodo')->with('message', 'Task deleted');
+        return redirect()->route('todolist')->with('message', 'Task deleted');
 
     }
 
@@ -66,7 +83,7 @@ class FrondEndcontroller extends Controller
 
      
 
-        $user = User::find(3);
+        $user = User::find(1);
 
         return view('userAddress', compact('user'));
     }

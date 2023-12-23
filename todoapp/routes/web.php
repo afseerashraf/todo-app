@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/login',[FrondEndcontroller::class,'login'])->name('loginpage');
 Route::get('/Address',[FrondEndcontroller::class, 'address'])->name('userAddress');
-Route::group(['middleware' => 'user_auth'], function(){
+//Route::group(['middleware' => 'user_auth'], function(){
     Route::post('/userLogin',[FrondEndcontroller::class,'userLogin'])->name('user.Login');
     Route::get('/create',[FrondEndcontroller::class,'create'])->name('create');
     Route::post('/todo',[FrondEndcontroller::class,'todo'])->name('todotask');
@@ -26,6 +26,6 @@ Route::group(['middleware' => 'user_auth'], function(){
 
 
 
-});
+//});
 
 
