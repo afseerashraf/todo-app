@@ -7,6 +7,8 @@ use App\Models\Todo;
 use App\Models\User;
 use App\Http\Middleware;
 use App\Models\UserAddress;
+use App\Http\Controllers\required;
+use Illuminate\Support\Facades\Auth;
 
 // Your controller code here
 
@@ -16,39 +18,33 @@ class FrondEndcontroller extends Controller
 {
     //
 
+    
     public function login(){
         
-         return view('login');
+        return view('login');
 }
-    public function userLogin(){
 
 
-        validator(request()->all(),[
-            'user_name' => ['required', 'username'],
-            'password' => ['required', 'password']
-        ])->validate();
+public function userLogedin(){
+        
+    $input = ['user_name' => request('username'), 'password' => bcrypt(request('password'))];
+    if(auth()->attempt($input)){
+        
+        return redirect()->route('create');
 
-        if(auth()->attempt(request()->only(['username', 'password']))){
-            return redirect()->route('create');
-        }else{
-             return redirect()->route('login')->with('message', 'invalid login data');
-
-        }
-
-
-        // $user = User::create(['user_name' => request('username'), 'password' => request('password'),]);
-        // if(auth()->attempt($user)){
-            
-        //     return redirect()->route('create');
-
-        // }else{
-        //         return redirect()->route('login')->with('message', 'invalid login data');
-        // }
+    }else{
+            return redirect()->route('loginpage')->with('message', 'invalid login data');
     }
+
+     
+}
+
 
 
     public function create(){
-        return view('createtodo');
+
+        $user = User::find(1);
+        return view('createtodo', compact('user'));
     }
 
     public function todo(){
@@ -87,4 +83,9 @@ class FrondEndcontroller extends Controller
 
         return view('userAddress', compact('user'));
     }
+
+
+    
+               
+
 }

@@ -4,7 +4,7 @@
 
 
 
-<p>@if(session()->has('message')) session()->get('message')@endif</p>
+@if(session()->has('message'))<p> {{session()->get('message')}}</p>@endif
 <form action="{{route('user.Login')}}" method="post">
   @csrf
   <div class="mb-3">
@@ -23,7 +23,7 @@
             <label class="form-check-label" for="remember">
                 Remember Me
             </label>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="Login" class="btn btn-primary">Login</button>
 </form>
 </div>
 
