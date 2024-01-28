@@ -25,8 +25,9 @@ class FrondEndcontroller extends Controller
 }
 
 
-public function userLogedin(){
+ public function userLogedin(){
         
+
     $input = ['user_name' => request('username'), 'password' => bcrypt(request('password'))];
     if(auth()->attempt($input)){
         

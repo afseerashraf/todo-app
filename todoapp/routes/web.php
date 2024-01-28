@@ -33,7 +33,7 @@ Route::get('/Address',[FrondEndcontroller::class, 'address'])->name('userAddress
     //     Route::get('/payments',[PaymentController::class,'viewpayment'])->name('viewpay');
     //     Route::post('/paymet',[PaymentController::class,'create'])->name('razorpay_payment');
     //     Route::post('/store-payment',[PaymentController::class,'payment'])->name('payment');
-    // });
+    //});
 
 
 

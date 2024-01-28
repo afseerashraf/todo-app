@@ -4,6 +4,7 @@
 
 <a href="{{route('create')}}" class="btn btn-primary" id="btn">Add task</a>
 <br>
+
 <div class="container">
 <table class="table table-warning">
   <thead>
