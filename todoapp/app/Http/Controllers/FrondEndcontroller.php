@@ -20,7 +20,8 @@ class FrondEndcontroller extends Controller
 
     
     public function login(){
-        
+
+        $user = 
         return view('login');
 }
 
@@ -63,8 +64,8 @@ class FrondEndcontroller extends Controller
     }
 
     public function delete($id){
-        $task = Todo::find($id);
-        $task->delete();
+        $delete = Todo::find($id);
+        $delete->delete();
 
         return redirect()->route('todolist')->with('message', 'Task deleted');
 

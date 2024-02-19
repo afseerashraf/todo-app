@@ -8,8 +8,8 @@
 <form action="{{route('user.Login')}}" method="post">
   @csrf
   <div class="col-md-3">
-    <label for="eusername" class="form-label">Username</label>
-    <input type="text" class="form-control" id="username" name="username">
+    <label for="eusername" class="form-label">Email</label>
+    <input type="text" class="form-control" id="username" name="email">
   </div>
   <div class="col-md-3">
     <label for="password" class="form-label">Password</label>

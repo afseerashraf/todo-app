@@ -18,7 +18,6 @@ use App\Http\Middleware\checkuser;
 */
 Route::get('/',[FrondEndcontroller::class,'login'])->name('loginpage');
 
-Route::get('/Address',[FrondEndcontroller::class, 'address'])->name('userAddress');
 
 //Route::middleware([checkuser::class], function(){
     Route::post('/userLogedin',[FrondEndcontroller::class,'userLogedin'])->name('user.Login');
@@ -33,10 +32,8 @@ Route::get('/Address',[FrondEndcontroller::class, 'address'])->name('userAddress
     //     Route::get('/payments',[PaymentController::class,'viewpayment'])->name('viewpay');
     //     Route::post('/paymet',[PaymentController::class,'create'])->name('razorpay_payment');
     //     Route::post('/store-payment',[PaymentController::class,'payment'])->name('payment');
-    //});
+    // });
 
 
 
 //});
-
-
