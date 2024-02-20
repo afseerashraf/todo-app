@@ -1,15 +1,17 @@
 @extends('layout')
+
 @section('content')
 
 
 
 
 @if(session()->has('message'))<p> {{session()->get('message')}}</p>@endif
-<form action="{{route('user.Login')}}" method="post">
+<form action="{{route('user.Login')}}" method="post" autocomplete="off">
   @csrf
+
   <div class="col-md-3">
     <label for="eusername" class="form-label">Email</label>
-    <input type="text" class="form-control" id="username" name="email">
+    <input type="text" class="form-control" id="email" name="email">
   </div>
   <div class="col-md-3">
     <label for="password" class="form-label">Password</label>
@@ -25,9 +27,10 @@
             <label class="form-check-label" for="remember">
                 Remember Me
             </label>
+    
   <button type="Login" class="btn btn-primary">Login</button>
 </form>
-</div>
+
 
 
 @endsection

@@ -1,13 +1,13 @@
 @extends('layout')
+<link rel="stylesheet" href="{{asset('css/createtodo.css')}}">
+
 @section('content')
 
-<link rel="stylesheet" href="{{asset('css/createtodo.css')}}">
 
 
 
 <div class="align">
 <div class="continer-fluid-md-6">
-    <h4>Welcome {{$user->user_name}}</h4>
     <form action="{{route('todotask')}}" method="post">
         @csrf
 

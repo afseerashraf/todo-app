@@ -1,0 +1,21 @@
+
+*{
+    padding: 10px;
+}
+table a:hover {
+    text-decoration: none;
+    color: rgb(112, 112, 105);
+
+}
+#btn1{
+    margin-left: 12px;
+}
+#btn1:hover{
+    background-color: aqua;
+    text-decoration: none;
+    border: none;
+}
+#btndlt:hover{
+    background-color: rgb(248, 209, 243);
+    border: none;
+}

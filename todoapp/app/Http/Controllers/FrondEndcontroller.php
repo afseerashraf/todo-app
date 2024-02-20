@@ -18,74 +18,59 @@ class FrondEndcontroller extends Controller
 {
     //
 
-    
-    public function login(){
-
-        $user = 
-        return view('login');
-}
-
-
- public function userLogedin(){
-        
-
-    $input = ['user_name' => request('username'), 'password' => bcrypt(request('password'))];
-    if(auth()->attempt($input)){
-        
-        return redirect()->route('create');
-
-    }else{
-            return redirect()->route('loginpage')->with('message', 'invalid login data');
-    }
-
-     
+public function viewlogin(){
+    return view('login');
 }
 
 
 
-    public function create(){
+public function userLogedin(){
+        
 
-        $user = User::find(1);
-        return view('createtodo', compact('user'));
-    }
+    $user = ['email'=> request('email'), 'password'=> request('password')];
 
-    public function todo(){
+        if(auth()->attempt($user, true)){
+            return redirect()->route('create');
+        }else{
+            return redirect()->route('loginpage')->with('message', 'user is invalid');
+        }
+}
 
+
+
+public function create(){
+
+   
+    return view('createtodo');
+}
+
+public function todo(){
+
+    $data = Todo::create(['task' => request ('todotask'), 'date' => request('date'),'time' => request('time')]);
       
-
-        $data = Todo::create(['task' => request ('todotask'), 'date' => request('date'),'time' => request('time')]);
-      
-        return redirect()->route('create')->with('message', 'successfully add your task');
-    }
+    return redirect()->route('create')->with('message', 'successfully add your task');
+}
     
-    public function list(){
-        $todos = Todo::latest()->get();
-        return view('todolist',compact('todos'));
-    }
+public function list(){
+    $todos = Todo::latest()->get();
+    return view('todolist',compact('todos'));
+}
 
-    public function delete($id){
-        $delete = Todo::find($id);
-        $delete->delete();
+public function delete($id){
+    $delete = Todo::find($id);
+    $delete->delete();
 
-        return redirect()->route('todolist')->with('message', 'Task deleted');
+    return redirect()->route('todolist')->with('message', 'Task deleted');
 
-    }
+}
 
-    public function logout(){
-        auth()->logout();
-        return redirect()->route('Login');
-    }
+public function logout(){
+    auth()->logout();
+    return redirect()->route('loginpage');
+}
 
 
-    public function address(){
-
-     
-
-        $user = User::find(1);
-
-        return view('userAddress', compact('user'));
-    }
-
+    
 
     
                

@@ -1,8 +1,9 @@
 @extends('layout')
+<link rel="stylesheet" href="{{asset('css/todolist.css')}}">
 @section('content')
 
 
-<a href="{{route('create')}}" class="btn btn-primary" id="btn">Add task</a>
+<a href="{{route('create')}}" class="btn btn-primary" id="btn1">Add task</a>
 <br>
 
 <div class="container">
@@ -28,7 +29,7 @@
         <td>{{$todo->task}}</td>
         <td>{{$todo->date}}</td>
         <td>{{$todo->time}}</td>
-        <td><a href="{{route('delete',['id' => $todo->id])}}" class="btn btn-success">delete</a>
+        <td><a href="{{route('delete',['id' => $todo->id])}}" class="btn btn-danger" id="btndlt">delete</a>
         </td>
 
 
