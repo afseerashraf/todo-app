@@ -4,8 +4,9 @@
 @section('content')
 
 
-
-
+@if (session('message'))
+<p class="fw-bold ">successfully</p>
+@endif
 <div class="align">
 <div class="continer-fluid-md-6">
     <form action="{{route('todotask')}}" method="post">
@@ -18,7 +19,7 @@
     </div>
     <div class="row">
     <div class="col-lg-3">
-    
+    @if (session('alert')) <p class="alert">wrong date you choosed</p> @endif
     <input class="form-control" type="date" id="date" placeholder="date" name="date" required >
 </div>
 </div>

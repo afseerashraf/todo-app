@@ -15,12 +15,10 @@ class Usertableseeder extends Seeder
     {
         //
         User::create([
+            'name' => 'afseer',
             'email' => 'afseer@gmail.com',
             'password' => '12345',
         ]);
-        User::create([
-            'email' => 'nafiya@gmail.com',
-            'password' => '1234',
-        ]);
+        
     }
 }

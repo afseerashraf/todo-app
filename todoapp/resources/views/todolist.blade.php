@@ -3,7 +3,6 @@
 @section('content')
 
 
-<a href="{{route('create')}}" class="btn btn-primary" id="btn1">Add task</a>
 <br>
 
 <div class="container">
@@ -15,6 +14,7 @@
       <th scope="col">date</th>
       <th scope="col">time</th>
       <th scope="col">Delete</th>
+      <th scope="col">Add task</th>
 
 
 
@@ -30,6 +30,10 @@
         <td>{{$todo->date}}</td>
         <td>{{$todo->time}}</td>
         <td><a href="{{route('delete',['id' => $todo->id])}}" class="btn btn-danger" id="btndlt">delete</a>
+        <td>
+        <a href="{{route('create')}}" class="btn btn-primary" id="btn1">Add task</a>
+
+        </td>
         </td>
 
 
