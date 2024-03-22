@@ -12,6 +12,8 @@ use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Crypt;
+
 
 // Your controller code here
 
@@ -76,7 +78,27 @@ public function list(){
     $todos = Todo::latest()->get();
     return view('todolist',compact('todos'));
 }
+public function updateTodo($id){
+    $todo = Crypt::decrypt($id);
+    $todo = Todo::find($todo);
 
+   
+
+    return view('update', compact('todo'));
+
+}
+public function updated(Request $request){
+    $todo = Crypt::decrypt(request('$todo->id'));
+    $todo = Todo::find($todo);
+
+    $todo->task = $request->input('todotask');
+    $todo->date = $request->input('date');
+    $todo->time = request()->input('time');
+
+    $todo->save();
+
+    return view('todolist')->with('updated', 'successfully updated');
+}
 public function delete($id){
     $delete = Todo::find($id);
     $delete->delete();
